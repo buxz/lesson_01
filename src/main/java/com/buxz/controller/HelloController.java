@@ -1,7 +1,12 @@
 package com.buxz.controller;
 
+import com.buxz.entity.UserEntity;
+import com.buxz.jpa.UserJPA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by SQ_BXZ on 2018-12-10.
@@ -14,8 +19,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    @Autowired
+    UserJPA userJPA;
+
     @RequestMapping("/helloworld")
     public String HelloWorld(){
         return "Hello World!";
+    }
+
+
+    @RequestMapping("/list")
+    public List<UserEntity> list(){
+        return userJPA.findAll();
+    }
+
+    @RequestMapping("/add")
+    public UserEntity add(){
+        UserEntity entity = new UserEntity();
+        entity.setName("张三");
+        entity.setAddress("梅楼");
+        entity.setAge(12);
+        return userJPA.save(entity);
+    }
+
+    @RequestMapping("/delete")
+    public List<UserEntity> delete(Long id){
+        userJPA.deleteById(id);
+        return userJPA.findAll();
     }
 }
