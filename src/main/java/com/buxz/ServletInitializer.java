@@ -1,7 +1,7 @@
 package com.buxz;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /*
 * SpringBootServletInitializer 是springboot提供的web程序初始化的入口

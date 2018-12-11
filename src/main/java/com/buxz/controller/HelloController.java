@@ -44,7 +44,7 @@ public class HelloController {
 
     @RequestMapping("/delete")
     public List<UserEntity> delete(Long id){
-        userJPA.deleteById(id);
+        userJPA.delete(id);
         return userJPA.findAll();
     }
 }
