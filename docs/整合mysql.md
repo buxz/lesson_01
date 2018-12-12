@@ -39,6 +39,15 @@
 7. controller 见 HelloController
 8. 开启druid监控
 
+添加依赖
+    
+    
+    		<dependency>
+    			<groupId>com.alibaba</groupId>
+    			<artifactId>druid</artifactId>
+    			<version>RELEASE</version>
+    		</dependency>
+
 application.yml配置
 
     spring:
@@ -75,8 +84,7 @@ application.yml配置
              format_sql: true
 
 
-9. 开启配置
-    DruidConfiguration
+开启配置 DruidConfiguration
    
 
     

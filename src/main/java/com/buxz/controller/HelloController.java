@@ -36,9 +36,10 @@ public class HelloController {
     @RequestMapping("/add")
     public UserEntity add(){
         UserEntity entity = new UserEntity();
-        entity.setName("张三");
+        entity.setName("李四");
         entity.setAddress("梅楼");
         entity.setAge(12);
+        entity.setPwd("021213");
         return userJPA.save(entity);
     }
 
