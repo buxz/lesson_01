@@ -42,6 +42,12 @@
 			<artifactId>fastjson</artifactId>
 			<version>RELEASE</version>
 		</dependency>
+		<!-- JavaMail依赖 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
