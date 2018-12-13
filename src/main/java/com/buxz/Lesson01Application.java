@@ -1,11 +1,12 @@
 package com.buxz;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /*
+* @ServletComponentScan 扫描系统下的 @WebServlet 注册自定义的servlet
+*
 * @SpringBootApplication =
 *   @Configuration + (经常与@Bean 组合使用，使用这两个注解就可以创建一个简单的Spring 配置类， 可以用来替代相应的XML 配置文件)
 *   @EnableAutoConfiguration + (能够自动配置Spring 的上下文，猜测和配置用户想要的Bean类。)
@@ -13,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 *
 *
 * */
+@ServletComponentScan
 @SpringBootApplication
 public class Lesson01Application {
 

@@ -1,4 +1,4 @@
-package com.buxz;
+package com.buxz.config;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;

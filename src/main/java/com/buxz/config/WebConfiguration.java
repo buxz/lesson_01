@@ -1,4 +1,4 @@
-package com.buxz;
+package com.buxz.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

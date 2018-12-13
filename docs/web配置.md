@@ -46,6 +46,30 @@
             registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/");
         }
     
+### 配置servlet 
+
+1. 新建servlet 的 类， 继承 HttpServlet
+    
+    
+    @WebServlet(urlPatterns = "/test2")
+    public class TestServlet extends HttpServlet
+    {
+        //重写get方法
+        @Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            //设置返回类型为json
+            response.setContentType("application/json");
+            //设置返回字符集
+            response.setCharacterEncoding("utf-8");
+            //输出对象
+            PrintWriter writer = response.getWriter();
+            //输出error消息
+            writer.write("执行TestServlet内doGet方法成功!");
+            writer.close();
+        }
+    }
+2. 在项目启动文件上添加@ServletComponentScan 注释，扫描并注册系统内所有被添加了 @WebServlet 的servlet
+
 
 
         
