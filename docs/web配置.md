@@ -27,6 +27,26 @@
 1. 创建 SessionInterceptor 实体类 实现 HandlerInterceptor接口 
 2. 配置 SessionInterceptor 到 SpringBoot 中 
     1. WebConfiguration 中 通过重写 addInterceptors 方法 此处配置拦截器
+    
+### 配置静态文件路径
+1. WebConfiguration 重写 addResourceHandlers() 添加静态路径
+
+        /**
+         * 自定义静态资源文件路径
+         *
+         * 我们配置了静态资源的路径为/resources/**，
+         * 那么只要访问地址前缀是/resources/，
+         * 就会被自动转到项目根目录下的static文件夹内。
+         * 如：我们访问：127.0.0.1:8080/resources/t.png就会被解析成127.0.0.1:8080/t.png。
+         * @param registry
+         *
+         */
+        @Override
+        public void addResourceHandlers(ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/");
+        }
+    
+
 
         
         
