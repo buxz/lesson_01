@@ -14,11 +14,11 @@ public class MailTest {
     @Test
     public void sendMail() throws Exception {
         new MailSender()
-                .title("测试SpringBoot发送邮件")
-                .content("祥哥送祝福了")
+                .title("哟哟切克闹")
+                .content("逗逼 要不要炸你")
                 .contentType(MailContentTypeEnum.TEXT)
                 .targets(new ArrayList<String>(){{
-                    add("1647623919@qq.com");
+                    add("353015520@qq.com");
                 }})
                 .send();
 

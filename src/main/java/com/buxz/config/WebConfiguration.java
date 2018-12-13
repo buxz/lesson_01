@@ -45,17 +45,17 @@ public class WebConfiguration extends WebMvcConfigurerAdapter
         converters.add(fastConverter);
     }
 
-    /**
-     * 配置拦截器
-     * @param registry
-     */
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        // session拦截器
-        registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**");
-        // 日志拦截器
-        registry.addInterceptor(new LoggerInterceptor()).addPathPatterns("/**");
-    }
+//    /**
+//     * 配置拦截器
+//     * @param registry
+//     */
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        // session拦截器
+//        registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**");
+//        // 日志拦截器
+//        registry.addInterceptor(new LoggerInterceptor()).addPathPatterns("/**");
+//    }
 
     /**
      * 自定义静态资源文件路径
