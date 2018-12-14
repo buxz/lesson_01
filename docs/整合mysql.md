@@ -86,6 +86,46 @@ application.yml配置
 
 开启配置 DruidConfiguration
    
+### SpringDataJPA 
+
+#### 自定义sql
+1. 使用@Query 自定义查询SQL ，
+2. 使用@Query + @Modifying , 实现数据的增删改
+3. 自定义的增删改语句，需要添加@Transaction 开启事务
+
+
+      @Transactional
+        @Modifying
+        @Query(value = "DELETE  from t_user where t_name = ?1 AND t_pwd = ?2",nativeQuery = true)
+        void deleteQuery(String name, String pwd);
+
+
+#### 自定义BaseRepository
+1. 继承JpaRepository 实现接口复用
+2. 需要添加@NoRepositoryBean, 注解如果配置在继承了JpaRepository接口以及其他SpringDataJpa内部的接口的子接口时，子接口不被作为一个Repository创建代理实现类。
+
+
+    @NoRepositoryBean
+    public interface BaseRepository<T,PK extends Serializable> extends JpaRepository<T,PK> {
+    
+    }
+    
+#### 分页查询
+
+       @RequestMapping("/cutPage")
+        public List<UserEntity> cutPage(int page){
+           UserEntity userEntity = new UserEntity();
+           userEntity.setSize(2);
+           userEntity.setPage(page==0?1:page);
+           userEntity.setSord("desc");
+           // 设置排序对象参数
+           Sort sort = new Sort(Sort.Direction.DESC, userEntity.getSidx());
+           // 创建分页对象
+           PageRequest pageRequest = new PageRequest(userEntity.getPage()-1,userEntity.getSize(),sort);
+           // 执行分页查询
+           return userJPA.findAll(pageRequest).getContent();
+        }
+
 
     
     
