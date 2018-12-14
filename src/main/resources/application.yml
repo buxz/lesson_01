@@ -34,6 +34,10 @@ spring:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+#  配置日志
+logging:
+  level:
+    com.buxz.controller.HelloController: 'error'
 
 
 
