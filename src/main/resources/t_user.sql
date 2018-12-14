@@ -28,3 +28,27 @@ CREATE TABLE `t_logger_infos` (
   `ali_time_consuming` int(8) DEFAULT '0' COMMENT '请求耗时（毫秒单位）',
   PRIMARY KEY (`ali_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=106119 DEFAULT CHARSET=utf8 COMMENT='请求日志信息表';
+
+# 商品信息表
+DROP TABLE IF EXISTS `t_good_infos`;
+CREATE TABLE `t_good_infos` (
+  `tg_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tg_title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `tg_price` DECIMAL(8,2) DEFAULT NULL COMMENT '价格',
+  `tg_unit` VARCHAR(20) DEFAULT NULL COMMENT '单位',
+  `tg_order` varchar(255) DEFAULT NULL COMMENT '订单信息',
+  `tg_type_id` INT(11)  DEFAULT NULL COMMENT '商品类型ID',
+  PRIMARY KEY (`tg_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=106119 DEFAULT CHARSET=utf8 COMMENT='商品信息表';
+INSERT INTO `t_good_infos` VALUES (2,'油菜','12.6', '斤', '2','1');
+
+# 商品分类信息表
+DROP TABLE IF EXISTS `t_good_types`;
+CREATE TABLE `t_good_types` (
+  `tgt_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tgt_name` varchar(30) DEFAULT NULL COMMENT '标题',
+  `tgt_is_show` CHAR(1) DEFAULT NULL COMMENT '价格',
+  `tgt_order` INT(2) DEFAULT NULL COMMENT '单价',
+  PRIMARY KEY (`tgt_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=106119 DEFAULT CHARSET=utf8 COMMENT='商品分类信息表';
+INSERT INTO `t_good_types` VALUES (1, '绿色蔬菜',1,1);
