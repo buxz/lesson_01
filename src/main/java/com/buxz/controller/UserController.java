@@ -2,6 +2,7 @@ package com.buxz.controller;
 
 import com.buxz.entity.UserEntity;
 import com.buxz.jpa.UserJPA;
+import com.buxz.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +25,24 @@ import java.util.List;
 @RequestMapping(value = "/user")
 public class UserController {
 
-    @Autowired
-    UserJPA userJPA;
+    private final UserJPA userJPA;
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private final UserService userService;
+
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    @Autowired
+    public UserController(UserJPA userJPA, UserService userService) {
+        this.userJPA = userJPA;
+        this.userService = userService;
+    }
 
     @RequestMapping("/list")
     public List<UserEntity> list(){
         logger.info("访问列表------------");
         logger.debug("访问列表------------");
         logger.error("访问列表------------");
-        return userJPA.findAll();
+        return userService.list();
     }
 
     /**

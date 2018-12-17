@@ -91,7 +91,19 @@
 			<artifactId>querydsl-apt</artifactId>
 			<version>RELEASE</version>
 		</dependency>
-	</dependencies>
+        <!-- SpringBoot内部的缓存配置 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+        <!-- redis缓存 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+    </dependencies>
 
 	<build>
 		<plugins>
