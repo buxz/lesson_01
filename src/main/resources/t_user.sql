@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS=0;
-
 # 用户表
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
@@ -10,6 +8,35 @@ CREATE TABLE `t_user` (
   `t_pwd` varchar(100) DEFAULT NULL COMMENT '登录密码',
   PRIMARY KEY (`t_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+INSERT into t_user(t_name,t_age,t_address,t_pwd)
+VALUES ('张三','12','张庄','123456'),
+('李四','13','李大楼','123456'),
+('赵大','14','赵庄','123456');
+
+
+# 角色表
+DROP TABLE IF EXISTS `t_role`;
+CREATE TABLE `t_role` (
+  `r_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `r_name` varchar(30) DEFAULT NULL COMMENT '名称',
+  `r_role` varchar(30) DEFAULT NULL COMMENT '标识',
+  PRIMARY KEY (`r_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+INSERT into t_role values(1,'超级管理员','admin'),
+  (2,'普通用户','user');
+
+# 用户角色关联表
+DROP TABLE IF EXISTS `t_user_role`;
+CREATE TABLE `t_user_role` (
+  `ur_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `ur_user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `ur_role_id` int(11) DEFAULT NULL COMMENT '角色ID',
+  PRIMARY KEY (`ur_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+INSERT into t_user_role values(1,1,1),
+  (2,1,2);
+
 
 # 日志信息表
 DROP TABLE IF EXISTS `t_logger_infos`;

@@ -12,9 +12,9 @@
 </head>
 <body>
 <h1> 登陆页  </h1>
-<form method="get" action="/user/login" >
-    用户名：<input type="text" name="name"/><br/>
-    密码：<input type="text" name="pwd"/>
+<form method="post" action="/user/login" >
+    用户名：<input type="text" name="username"/><br/>
+    密码：<input type="text" name="password"/>
     <input type="submit" value="登录"/>
 </form>
 

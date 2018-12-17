@@ -5,6 +5,9 @@ import com.buxz.jpa.UserJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +20,24 @@ import java.util.List;
  */
 @Service
 @CacheConfig(cacheNames= "user-bxz")
-public class UserService {
+public class UserService implements UserDetailsService {
+
     @Autowired
     private UserJPA userJPA;
 
     @Cacheable
     public List<UserEntity> list(){
         return userJPA.findAll();
+    }
+
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserEntity user = userJPA.findByUsername(username);
+        if (user==null){
+            throw new UsernameNotFoundException("未查询到用户："+username);
+        }
+        return user;
     }
 
 }

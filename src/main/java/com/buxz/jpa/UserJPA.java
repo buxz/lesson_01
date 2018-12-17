@@ -43,5 +43,12 @@ public interface UserJPA extends
     @Query(value = "DELETE  from t_user where t_name = ?1 AND t_pwd = ?2",nativeQuery = true)
     void deleteQuery(String name, String pwd);
 
+    /**
+     * 使用springDataJpa方法定义查询
+     * @param username
+     * @return
+     */
+    UserEntity findByUsername(String username);
+
 
 }
