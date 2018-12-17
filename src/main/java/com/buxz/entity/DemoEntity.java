@@ -1,5 +1,6 @@
 package com.buxz.entity;
 
+import com.buxz.validator.FlagValidator;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -20,8 +21,17 @@ public class DemoEntity implements Serializable
     @Email // 邮箱格式
     private String mail;
 
+    // 需要验证 flag字段内容仅为 1，2，3
+    @FlagValidator(values = "1,2,3")
+    private String flag;
 
+    public String getFlag() {
+        return flag;
+    }
 
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public String getName() {
         return name;
