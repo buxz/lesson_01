@@ -20,7 +20,7 @@ public class RoleEntity implements Serializable
     @Column(name = "r_name")
     private String name;
 
-    @Column(name = "r_falg")
+    @Column(name = "r_flag")
     private String flag;
 
     public String getFlag() {

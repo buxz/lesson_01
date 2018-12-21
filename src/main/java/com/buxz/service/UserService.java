@@ -25,6 +25,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserJPA userJPA;
 
+
     @Cacheable
     public List<UserEntity> list(){
         return userJPA.findAll();

@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
   `r_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `r_name` varchar(30) DEFAULT NULL COMMENT '名称',
-  `r_role` varchar(30) DEFAULT NULL COMMENT '标识',
+  `r_flag` varchar(30) DEFAULT NULL COMMENT '标识',
   PRIMARY KEY (`r_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 INSERT into t_role values(1,'超级管理员','admin'),

@@ -91,12 +91,12 @@ public class UserEntity extends BaseEntity implements Serializable,UserDetails
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        List<RoleEntity> roleEntities = getRoles();
-        for (RoleEntity roleEntity : roleEntities) {
-            authorities.add(new SimpleGrantedAuthority(roleEntity.getFlag()));
+        List<GrantedAuthority> auths = new ArrayList<>();
+        List<RoleEntity> roles = getRoles();
+        for (RoleEntity role : roles) {
+            auths.add(new SimpleGrantedAuthority(role.getFlag()));
         }
-        return authorities;
+        return auths;
     }
 
     public String getPassword() {

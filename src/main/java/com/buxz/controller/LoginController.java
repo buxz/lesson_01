@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/login")
 public class LoginController {
 
     @Autowired
@@ -21,8 +21,9 @@ public class LoginController {
      * 初始化登录页面
      * @return
      */
-    @RequestMapping(value = "/login_view",method = RequestMethod.GET)
-    public String login_view(){
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    public String login_view(String errorMessage){
+        System.out.println("错误信息---"+errorMessage);
         return "login";
     }
 
@@ -30,14 +31,15 @@ public class LoginController {
      * 登录成功页面
      * @return
      */
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @ResponseBody
+    @RequestMapping(value = "/success",method = RequestMethod.POST)
     public String index(){
-        return "index";
+        return "登录成功";
     }
 
 
     @ResponseBody
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/form")
     public String login(UserEntity user, HttpServletRequest request)
     {
         //登录成功
