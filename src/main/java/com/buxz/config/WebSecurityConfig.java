@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     /**
      * 在内存中创建了一个用户，该用户的名称为bxz，密码为 021213 ，用户角色为USER。
+     * 此处可以 auth.userDetailsService(userSecuritySevice()); 通过注入角色信息 或者 重写   userDetailsService()
      * @param auth
      * @throws Exception
      */
@@ -39,6 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //                .withUser("bxz")
 //                .password("021213")
 //                .roles("USER");
+//        auth.userDetailsService(userSecuritySevice());
 //    }
 
     /**

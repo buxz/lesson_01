@@ -31,10 +31,9 @@ public class LoginController {
      * 登录成功页面
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/success",method = RequestMethod.POST)
     public String index(){
-        return "登录成功";
+        return "main";
     }
 
 
