@@ -101,6 +101,7 @@ public class UserEntity extends BaseEntity implements Serializable,UserDetails
         return auths;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
@@ -109,25 +110,30 @@ public class UserEntity extends BaseEntity implements Serializable,UserDetails
         this.password = password;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
+    // 账户是否未过期
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    // 账户是否未锁定
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    // 密码是否过期
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    // 账户是否激活
     @Override
     public boolean isEnabled() {
         return true;
