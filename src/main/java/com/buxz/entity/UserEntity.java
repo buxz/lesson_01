@@ -35,7 +35,9 @@ public class UserEntity extends BaseEntity implements Serializable,UserDetails
     @Column(name = "t_pwd")
     private String password;
 
-    @ManyToMany
+    // FetchType.LAZY 懒加载，加载一个实体时，定义懒加载的属性不会马上从数据库中加载。(默认加载方式)
+    // FetchType.EAGER 急加载，加载一个实体时，定义急加载的属性会立即从数据库中加载。
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "t_user_role",
             joinColumns = {

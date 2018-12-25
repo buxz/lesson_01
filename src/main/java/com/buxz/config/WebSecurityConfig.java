@@ -22,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
      * 完成自定义认证实体注入
      * @return
      */
-    @Bean
-    UserDetailsService userSecurityService(){
+    @Override
+    protected UserDetailsService userDetailsService() {
         return new UserService();
     }
 

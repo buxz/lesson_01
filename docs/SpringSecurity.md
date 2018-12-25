@@ -1,6 +1,10 @@
 # 整合 SpringSecurity
 - 认证，认证用户
 - 授权，授权用户资源
+- 默认用户名   user
+- 默认登录密码 在项目启动的时候 
+    Using default security password: 6c920ced-f1c1-4604-96f7-f0ce4e46f5d4
+
 ## 1. 添加依赖
 ```xml
         <!-- SpringSecurity 安全框架-->
@@ -24,10 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     /**
      * 完成自定义认证实体注入
+     * 重写 userDetailsService() 方法
      * @return
      */
-    @Bean
-    UserDetailsService userSecurityService(){
+    @Override
+    UserDetailsService userDetailsService(){
         return new UserService();
     }
 
