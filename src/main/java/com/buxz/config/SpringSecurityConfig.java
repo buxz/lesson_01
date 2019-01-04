@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * Created by SQ_BXZ on 2018-12-17.
  *  @EnableWebSecurity 注解开启Spring Security的功能
  */
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+//@EnableWebSecurity
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
     /**
      * 完成自定义认证实体注入

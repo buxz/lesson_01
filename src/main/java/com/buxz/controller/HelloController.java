@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by SQ_BXZ on 2018-12-10.
- * @RestController =
- *  @Controller   +
- *  @ResponseBody (该注解用于将Controller 的方法返回对象， 通过适当的HttpMessageConverter转换为指定格式后，写入Response对象的body数据区。)
  *
+ * 这个控制器我们开放，让SpringSecurity不去管理
  *
  */
 @RestController
+@RequestMapping(value = "/hello")
 public class HelloController {
 
     @Autowired
@@ -26,7 +24,7 @@ public class HelloController {
 
     Logger logger = LoggerFactory.getLogger(HelloController.class);
 
-    @RequestMapping("/helloworld")
+    @RequestMapping("/say")
     public String HelloWorld(){
         return "Hello World!";
     }
