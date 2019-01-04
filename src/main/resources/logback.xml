@@ -48,8 +48,15 @@
         </triggeringPolicy>
     </appender>
 
-    <!-- 日志输出级别 -->
-    <root level="INFO">
+    <!--
+        日志输出级别
+        Debug 最小
+        Info
+        Warn
+        Error
+        Fatal 最大
+        -->
+    <root level="Info">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>

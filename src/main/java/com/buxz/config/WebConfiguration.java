@@ -3,6 +3,7 @@ package com.buxz.config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.buxz.interceptor.JwtTokenInterceptor;
 import com.buxz.interceptor.LoggerInterceptor;
 import com.buxz.interceptor.SessionInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -60,6 +61,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter
 
     /**
      * 配置拦截器
+     * 拦截器起作用顺序 按照代码顺序执行
      * @param registry
      */
     @Override
@@ -67,6 +69,7 @@ public class WebConfiguration extends WebMvcConfigurerAdapter
         // session拦截器
 //        registry.addInterceptor(new SessionInterceptor()).addPathPatterns("/**");
         // 日志拦截器
+        registry.addInterceptor(new JwtTokenInterceptor()).addPathPatterns("/api/**");
         registry.addInterceptor(new LoggerInterceptor()).addPathPatterns("/**");
     }
 

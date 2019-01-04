@@ -2,6 +2,7 @@ package com.buxz.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.buxz.base.NativeLogger;
 import com.buxz.entity.LoggerEntity;
 import com.buxz.jpa.LoggerJPA;
 import com.buxz.utils.LoggerUtils;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 系统日志拦截器
  */
-public class LoggerInterceptor implements HandlerInterceptor
+public class LoggerInterceptor extends NativeLogger implements HandlerInterceptor
 {
     //请求开始时间标识
     private static final String LOGGER_SEND_TIME = "_send_time";
@@ -33,6 +34,7 @@ public class LoggerInterceptor implements HandlerInterceptor
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
+        logger.info("开启拦截器====="+this.getClass().getName()+"=====被拦截路径: "+request.getRequestURI());
         //创建日志实体
         LoggerEntity logger = new LoggerEntity();
         //获取请求sessionId
