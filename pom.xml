@@ -134,7 +134,14 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>RELEASE</version>
-		</dependency></dependencies>
+		</dependency>
+		<!-- 配置广播服务 websocket -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>
