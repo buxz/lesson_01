@@ -7,7 +7,12 @@
     <script src="/js/stomp.min.js"></script>
     <script>
         var stompClient = null;
-        // 连接
+        /**
+         * 连接
+         *  通过SockJs来注册了endpoine
+         *  并且通过客户端开启通过连接
+         *  通过注册/topic/getReponse路径来回去服务端向浏览器端的请求数据内容
+         */
         function connect() {
             var socket = new SockJS("/endpointWisely");
             stompClient = Stomp.over(socket);
@@ -15,7 +20,7 @@
                 setConnected(true);
                 console.log("connected: "+frame);
                 stompClient.subscribe("/topic/getResponse",function (response) {
-                    showResponse(JSON.parse(response.body).responseMessage);
+                    showResponse(JSON.parse(response.body).message);
                 })
             })
 
@@ -33,6 +38,7 @@
         }
         // 显示socket 返回消息内容
         function showResponse(message) {
+            console.log("返回信息=="+message);
             $("#response").html(message);
         }
 
@@ -52,7 +58,7 @@
         }
     </script>
 </head>
-<body>
+<body onload="disconnect()">
 <button id="connect" onclick="connect()">连接</button>
 <button id="disconnect" onclick="disconnect()">断开连接</button>
 <div id="inputDiv">

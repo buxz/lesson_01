@@ -4,14 +4,9 @@ import com.buxz.entity.WiselyMessage;
 import com.buxz.entity.WiselyResponse;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-
-@Controller
+@RestController
 public class WebSocketController {
 
     /**
@@ -22,11 +17,11 @@ public class WebSocketController {
      * @throws Exception
      */
    @MessageMapping("/welcome")
-   @SendTo("/topic/getResponse")
+   @SendTo("/topic/getResponse") // "/topic" 该地址已经配置在WebSocketConfiguration
     public WiselyResponse say(WiselyMessage message) throws Exception
     {
         // 等待三秒钟
-        Thread.sleep(3000);
-        return new WiselyResponse("欢迎使用webSocket"+message.getName());
+        Thread.sleep(1000);
+        return new WiselyResponse("欢迎使用webSocket， "+message.getName());
     }
 }
