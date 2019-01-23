@@ -1,5 +1,6 @@
 package com.buxz;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -28,6 +29,11 @@ public class Lesson01Application {
 	*
 	* */
 	public static void main(String[] args) {
+	    //
+//		SpringApplication springApplication = new SpringApplication(Lesson01Application.class);
+//		springApplication.setBannerMode(Banner.Mode.OFF);
+//		springApplication.run(args);
+
 		SpringApplication.run(Lesson01Application.class, args);
 	}
 
