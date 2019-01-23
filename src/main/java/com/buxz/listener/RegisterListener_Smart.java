@@ -6,6 +6,7 @@ import com.buxz.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.SmartApplicationListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -39,6 +40,7 @@ public class RegisterListener_Smart implements SmartApplicationListener{
      * @param applicationEvent
      */
     @Override
+    @Async
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
         //转换事件类型
         UserRegisterEvent userRegisterEvent = (UserRegisterEvent) applicationEvent;
