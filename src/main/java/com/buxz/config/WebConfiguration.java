@@ -5,11 +5,12 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.buxz.interceptor.JwtTokenInterceptor;
 import com.buxz.interceptor.LoggerInterceptor;
-import com.buxz.interceptor.SessionInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.*;
 
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -41,6 +42,11 @@ public class WebConfiguration extends WebMvcConfigurerAdapter
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         //调用父类的配置
         super.configureMessageConverters(converters);
+
+        // 字符串转换器，放在FastJson前 可以避免String 转 FastJson
+        StringHttpMessageConverter converter  = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        converters.add(converter);
+
         //创建fastJson消息转换器
         FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         //创建配置类
@@ -55,7 +61,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter
         fastConverter.setDefaultCharset(StandardCharsets.UTF_8); // 防止中文乱码
         //将fastjson添加到视图消息转换器列表内
         converters.add(fastConverter);
+
+
     }
+
 
     /**
      * 配置拦截器
