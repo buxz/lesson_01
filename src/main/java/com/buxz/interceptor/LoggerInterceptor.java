@@ -5,9 +5,8 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.buxz.base.NativeLogger;
 import com.buxz.entity.LoggerEntity;
 import com.buxz.jpa.LoggerJPA;
+import com.buxz.provider.ApplicationContextProvider;
 import com.buxz.utils.LoggerUtils;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -90,19 +89,8 @@ public class LoggerInterceptor extends NativeLogger implements HandlerIntercepto
                 SerializerFeature.DisableCircularReferenceDetect,
                 SerializerFeature.WriteMapNullValue));
         //执行将日志写入数据库
-        LoggerJPA loggerDAO = getDAO(LoggerJPA.class,request);
+
+        LoggerJPA loggerDAO =  ApplicationContextProvider.getBean(LoggerJPA.class);
         loggerDAO.save(loggerEntity);
-    }
-    /**
-     * 根据传入的类型获取spring管理的对应dao
-     * @param clazz 类型
-     * @param request 请求对象
-     * @param <T>
-     * @return
-     */
-    private <T> T getDAO(Class<T> clazz,HttpServletRequest request)
-    {
-        BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
-        return factory.getBean(clazz);
     }
 }
