@@ -11,7 +11,7 @@ import java.util.Date;
 @Component
 public class ScheduleTest {
 
-    @Scheduled(cron = "*/5 * * * * ?")
+//    @Scheduled(cron = "*/5 * * * * ?")
     public void cron(){
         System.out.println("执行测试时间：" + new Date(System.currentTimeMillis()));
     }

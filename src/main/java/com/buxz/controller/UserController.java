@@ -1,6 +1,7 @@
 package com.buxz.controller;
 
 import com.buxz.entity.UserEntity;
+import com.buxz.entity.UserEntityLombok;
 import com.buxz.jpa.UserJPA;
 import com.buxz.service.UserService;
 import org.slf4j.Logger;
@@ -91,4 +92,11 @@ public class UserController {
         userJPA.delete(id);
         return userJPA.findAll();
     }
+
+    @RequestMapping("/register")
+    public String register(UserEntityLombok user){
+        userService.register(user);
+        return "注册成功";
+    }
+
 }

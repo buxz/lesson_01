@@ -18,7 +18,7 @@ public class LombokTest {
     public void lombokTest() throws Exception {
         log.info("dddddddddddddd");
 
-        UserEntityLombok entityLombok = new UserEntityLombok("hh",12,"sdf");
+        UserEntityLombok entityLombok = new UserEntityLombok();
 //        entityLombok.setName("哟哟切克闹");
         System.out.println(entityLombok.getName());
         System.out.println(entityLombok.toString());

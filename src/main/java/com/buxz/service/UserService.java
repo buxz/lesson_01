@@ -1,10 +1,13 @@
 package com.buxz.service;
 
 import com.buxz.entity.UserEntity;
+import com.buxz.entity.UserEntityLombok;
+import com.buxz.event.UserRegisterEvent;
 import com.buxz.jpa.UserJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,6 +28,10 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserJPA userJPA;
 
+    // 事件发布是由ApplicationContext对象管控的，我们发布事件前需要注入ApplicationContext对象调用publishEvent方法完成事件发布
+    @Autowired
+    ApplicationContext applicationContext;
+
 
     @Cacheable
     public List<UserEntity> list(){
@@ -40,5 +47,16 @@ public class UserService implements UserDetailsService {
         }
         return user;
     }
+
+    /**
+     * 用户注册方法
+     */
+    public void register(UserEntityLombok user){
+        // 省略其他逻辑
+
+        // 发布userRegisterEvent事件
+        applicationContext.publishEvent(new UserRegisterEvent(this,user));
+    }
+
 
 }
